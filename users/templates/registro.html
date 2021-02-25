@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+    .btn {
+    display: inline-block;
+    text-align: center;
+    border-radius: 2px;
+    line-height: 19px;
+    cursor: pointer;
+    margin-left: -1px;
+    padding: 4px 15px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    background-image: -webkit-linear-gradient(top,#f8f8f8,#f1f1f1);
+    border: 1px solid #c6c6c6;
+    color: #000;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+</style>
+    <meta charset="UTF-8">
+    <title>Registro para el sorteo</title>
+</head>
+<body>
+
+{% if correo %}
+<h4> Para completar tu registro debes hacer click en el enlace que llego a tu correo </h4>
+<p>Si no lo haz recibido, puedes verlo pinchando <a href=" {% url 'notificacion' id %}" >aqui!</a></p>
+{% endif %}
+
+<h1>Formulario de registro</h1>
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div>
+        {{ form.nombres.label }} {{form.nombres}} {{form.errors.nombres}}
+        </div>
+
+        <div>
+        {{ form.apellidos.label }} {{form.apellidos}} {{form.errors.apellidos}}
+        </div>
+
+        <div>
+        {{ form.edad.label }} {{form.edad}} {{form.errors.edad}}
+        </div>
+
+        <div>
+        {{ form.email.label }} {{form.email}} {{form.errors.email}}
+        </div>
+        <br>
+        <button type="submit" name="Enviar">Enviar</button>
+    </form>
+<br>
+<a class="btn" href="{% url 'index' %}">Volver</a>
+
+</body>
+</html>
+<script>
+
+    {% if mensaje %}
+
+        window.alert('{{ mensaje }}')
+
+    {% endif %}
+
+</script>

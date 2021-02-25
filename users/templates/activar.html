@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Activacion para el sorteo</title>
+</head>
+<body>
+    <h2>Activacion para el sorteo</h2>
+<form method="POST" action="">
+        {% csrf_token %}
+        {{form.id}}
+        <div>
+        {{ form.clave.label }} {{form.clave}} {{form.errors.clave}}
+        </div>
+
+        <div>
+        {{ form.clave2.label }} {{form.clave2}} {{form.errors.clave2}}
+        </div>
+
+        <br>
+        <button type="submit" name="Enviar">Enviar</button>
+    </form>
+    <br>
+<a class="btn" href="{% url 'index' %}">Volver</a>
+</body>
+</html>
+
+<script>
+
+    {% if mensaje %}
+        window.alert('{{mensaje}}')
+    {% endif %}
+
+</script>
